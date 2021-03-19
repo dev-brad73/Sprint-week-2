@@ -15,6 +15,6 @@ MILEAGE_RATE = float(f.readline())
 RENTAL_CAR_RATE = float(f.readline())
 f.close()
 
-# Inputs: Runs the inputs from a function in the backpack
+# Inputs: Runs all the inputs from a function in the backpack
 if __name__ == "__main__":
     bp.main()
