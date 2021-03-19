@@ -1,5 +1,5 @@
-def main():  # Runs the opening menu for the program, allows user to choose the option they want,
-             # and run until they choose quit.
+def main(): # Runs the opening menu for the program, allows user to choose the option they want,
+            # and run until they choose quit.
     while True:
         print()
         print("NL Chocolate Company")
@@ -42,14 +42,14 @@ def main():  # Runs the opening menu for the program, allows user to choose the 
 
 
 def edit_default_values():  # Allows user to edit the default values stored in the TCDef.dat file after
-                            # providing the correct password
+    # providing the correct password
     while True:
         try:
             change_values = int(input("Do you want to change the default values (1) or return to main menu (2): "))
         except:
             print("Please enter 1 or 2 - try again.")
         else:
-            while True: # Password is password found in the password.dat file
+            while True:  # Password is password found in the password.dat file
                 if change_values == 1:
                     f = open("Password.dat", "r")
                     print()
@@ -91,7 +91,7 @@ def default_values_menu():  # Brings up the menu for changing the default values
 
 
 def def_val_menu_num(item_change):  # Accesses the default values in the TCDef.dat file and allows the user
-                                    # to change them and then return to the mail menu
+    # to change them and then return to the mail menu
     global CLAIM_NUM
     global HST
     global LOW_PER_DIEM_RATE
@@ -200,7 +200,7 @@ def def_val_menu_num(item_change):  # Accesses the default values in the TCDef.d
         main()
 
 
-def write_default_values(): # Writes all the new, changed, edited, etc, default values back to the TCDef.dat file
+def write_default_values():  # Writes all the new, changed, edited, etc, default values back to the TCDef.dat file
     f = open("TCDef.dat", "w")
     f.write("{}\n".format(str(CLAIM_NUM)))
     f.write("{}\n".format(str(HST)))
@@ -224,7 +224,7 @@ def write_default_values(): # Writes all the new, changed, edited, etc, default 
 
 
 def write_previous_years_values():  # Writes all the monthly totals from the previous year to the
-                                    # Previous Years Travel Claims.dat file in case company needs them in the future
+    # Previous Years Travel Claims.dat file in case company needs them in the future
     import datetime
     f = open("Previous Years Travel Claims.dat", "a")
     cur_date = datetime.datetime.now()
@@ -246,7 +246,7 @@ def write_previous_years_values():  # Writes all the monthly totals from the pre
     f.close()
 
 
-def val_int_number(number_value, min_value, max_value):     # Validates if a number falls between a min and max value
+def val_int_number(number_value, min_value, max_value):  # Validates if a number falls between a min and max value
     is_valid = True
     try:
         number_value = int(number_value)
@@ -268,7 +268,7 @@ def str_and_pad(dollar_value):  # Formats a number to 2 decimal places, aligns i
     return dollar_valuePad
 
 
-def emp_travel_claim():     # Allows the user to enter a new travel claim
+def emp_travel_claim():  # Allows the user to enter a new travel claim
     # Read values from "TCDef.dat":
     global CLAIM_NUM
     global HST
@@ -374,7 +374,8 @@ def emp_travel_claim():     # Allows the user to enter a new travel claim
 
         # Appending claim values to "Claims.dat" on a single line with formatting:
         f = open('Claims.dat', 'a')
-        f.write(str(CLAIM_NUM) + ", " + emp_num + ", " + emp_name + ", " + trip_loc + ", " + str(date_start) + ", " + str(
+        f.write(
+            str(CLAIM_NUM) + ", " + emp_num + ", " + emp_name + ", " + trip_loc + ", " + str(date_start) + ", " + str(
                 date_end) + ", " + car_used + ", " + str(days_num) + ", " + str(per_diem) + ", " + str(
                 mile_amt) + ", " + str(claim_amt) + ", " + str(hst) + ", " + str(claim_tot) + '\n')
         f.close()
@@ -387,8 +388,8 @@ def emp_travel_claim():     # Allows the user to enter a new travel claim
         return
 
 
-def print_travel_claim():   # Allows the user to print the travel claim with totals per entry and totals for
-                            # number of claims entered
+def print_travel_claim():  # Allows the user to print the travel claim with totals per entry and totals for
+    # number of claims entered
     import datetime
     global claim_date_head
 
@@ -401,13 +402,13 @@ def print_travel_claim():   # Allows the user to print the travel claim with tot
     # print("         1         2         3         4         5         6         7         8")
     # print("12345678901234567890123456789012345678901234567890123456789012345678901234567890")
     print()
-    print(CenterLogo.center(89))
+    print(CenterLogo.center(91))
     print()
-    print(CenterStr.center(89))
+    print(CenterStr.center(91))
     print()
-    print("CLAIM     CLAIM       SALESPERSON              CLAIM      PER DIEM   MILEAGE    CLAIM")
-    print("NUMBER    DATE           NAME                 LOCATION     AMOUNT    AMOUNT     AMOUNT")
-    print("=" * 89)
+    print("CLAIM     CLAIM       SALESPERSON              CLAIM      PER DIEM    MILEAGE     CLAIM")
+    print("NUMBER    DATE           NAME                 LOCATION     AMOUNT     AMOUNT      AMOUNT")
+    print("=" * 91)
 
     # Setting up counters for stored values
     ClaimCtr = 0
@@ -438,7 +439,8 @@ def print_travel_claim():   # Allows the user to print the travel claim with tot
         hst = float(ClaimList[11].strip())
         claim_tot = float(ClaimList[12].strip())
 
-        print("{:<6}  {:<9}     {:<19}     {:<11} {}   {}   {}".format(ClaimNum, claim_date, emp_name, trip_loc, per_diemPad, mile_amtPad, claim_amtPad))
+        print("{:<6}  {:<9}     {:<19}     {:<11} {}    {}    {}".format(ClaimNum, claim_date, emp_name, trip_loc,
+                                                                       per_diemPad, mile_amtPad, claim_amtPad))
 
         # Setting up counters
         ClaimCtr += 1
@@ -451,15 +453,16 @@ def print_travel_claim():   # Allows the user to print the travel claim with tot
 
     f.close()
 
-    print("=" * 89)
-    print("{} claims listed                                         {}  {}  {}".format(ClaimCtr, mile_amtAccPad, per_diemAccPad, claim_totAccPad))
+    print("=" * 91)
+    print("{:<3} claims listed                                         {:<9}   {:<9}   {:<9}".format(ClaimCtr, mile_amtAccPad,
+                                                                                       per_diemAccPad, claim_totAccPad))
     print()
-    print(CenterEnd.center(80))
+    print(CenterEnd.center(91))
     print()
     any_key = input("Report successfully processed. Press any key to return to the main menu... ")
 
 
-def graph_monthly_claims(): # Allows the user to print a graph showing the monthly amounts for travel claims
+def graph_monthly_claims():  # Allows the user to print a graph showing the monthly amounts for travel claims
     import matplotlib.pyplot as mpl
     import numpy as np
     import datetime
@@ -507,7 +510,7 @@ def graph_monthly_claims(): # Allows the user to print a graph showing the month
 
     # If the date is currently Jan 1, it will save all of last years totals to th Previous Years Travel Claims.dat file
     # in case they need to be used by the company at a later date.
-    #cur_date = datetime.datetime.strptime(cur_datestr, "%Y-%m-%d")
+    # cur_date = datetime.datetime.strptime(cur_datestr, "%Y-%m-%d")
     global cur_datenow
     while True:
         try:
@@ -533,7 +536,7 @@ def graph_monthly_claims(): # Allows the user to print a graph showing the month
     # Make a list from Jan-Dec, to assign Each month for the x-axis:
     x_axis = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 
-    #Set outputs to 0
+    # Set outputs to 0
     claim_amtJAN = 0
     claim_amtFEB = 0
     claim_amtMAR = 0
@@ -550,7 +553,7 @@ def graph_monthly_claims(): # Allows the user to print a graph showing the month
     # If the date is currently Jan 1, it will reset the monthly totals in the TCDef.dat file to 0
     if cur_datenow.month == 1 and cur_datenow.day == 1:
         write_default_values()
-    else:   # Pull start date and claim amount from each of the entries in the Claims.dat file
+    else:  # Pull start date and claim amount from each of the entries in the Claims.dat file
         f = open("Claims.dat", "r")
         for StartDate in f:
             ClaimList = StartDate.split(",")
@@ -591,7 +594,8 @@ def graph_monthly_claims(): # Allows the user to print a graph showing the month
         f.close()
 
         # Create list for "y_axis", and add the variable for each month of the claims amounts:
-        y_axis = [claim_amtJAN, claim_amtFEB, claim_amtMAR, claim_amtAPR, claim_amtMAY, claim_amtJUN, claim_amtJUL, claim_amtAUG, claim_amtSEP, claim_amtOCT, claim_amtNOV, claim_amtDEC]
+        y_axis = [claim_amtJAN, claim_amtFEB, claim_amtMAR, claim_amtAPR, claim_amtMAY, claim_amtJUN, claim_amtJUL,
+                  claim_amtAUG, claim_amtSEP, claim_amtOCT, claim_amtNOV, claim_amtDEC]
 
         # Labels for X (Months) and Y (Claim Totals) axis, then add title of "Total Sales Each Month":
         mpl.xlabel("Months", color="blue")
